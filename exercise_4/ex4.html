@@ -1,0 +1,46 @@
+<!-- Exercise:
+Create a button that changes its text when clicked.
+Add a mouseover event to change the background color of a div when hovered.
+Implement a form that displays an alert when the form is submitted. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 4</title>
+    <link rel="stylesheet" href="ex4.css" />
+  </head>
+  <body>
+    <p>Below button will change it's text when it's clicked</p>
+
+    <button class="btn-1" id="btn-1">Click me!</button><br />
+    <hr />
+    <p>Below div will change it's background color when hovered</p>
+
+    <div class="container" id="container"></div>
+    <br />
+    <hr />
+    <form id="form">
+      <p>Alert will be displayed when below form is submitted</p>
+      <p>Login Form</p>
+      <label for="name"> Name: </label><br />
+      <input
+        type="text"
+        name="name"
+        id="name"
+        placeholder="Enter your name"
+      /><br />
+      <label for="password">Password:</label><br />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Enter your password"
+      /><br />
+      <button class="btn">Login</button>
+    </form>
+
+    <script src="ex4.js"></script>
+  </body>
+</html>

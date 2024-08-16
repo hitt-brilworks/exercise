@@ -1,0 +1,22 @@
+.btn-1 {
+  font-size: 1.5rem;
+  background-color: black;
+  color: white;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+}
+
+.container {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+}
+
+p {
+  font-size: 1.3rem;
+}
+
+.change-bg {
+  background-color: red;
+  transition: background-color 0.1s ease;
+}
