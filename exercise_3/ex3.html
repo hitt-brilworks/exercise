@@ -1,0 +1,44 @@
+<!-- Exercise:
+Create a form with fields for name, email, and password.
+Use JavaScript to validate that all fields are filled out before submission.
+Display an alert if any fields are missing or invalid. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 3</title>
+    <link rel="stylesheet" href="./ex3.css" />
+  </head>
+  <body>
+    <div class="container">
+      <p class="register-heading">Registration Form</p>
+      <form class="form" autocomplete="off" novalidate>
+        <label for="name"> Name: </label><br />
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter your name"
+        /><br />
+        <label for="email">Email:</label><br />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email address"
+        /><br />
+        <label for="password">Password:</label><br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter your password"
+        /><br />
+        <button>Register</button>
+      </form>
+    </div>
+    <script src="./ex3.js"></script>
+  </body>
+</html>
