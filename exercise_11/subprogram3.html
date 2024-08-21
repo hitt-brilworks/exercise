@@ -1,0 +1,51 @@
+<!-- Exercise:
+○ Create a program that takes a user’s age and displays whether they are a child,
+teenager, or adult.
+○ Write a program that uses a for loop to display numbers from 1 to 10.
+○ Implement a switch statement to handle different cases for a variable. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 11</title>
+  </head>
+  <body>
+    <script>
+      // Implement a switch statement to handle different cases for a variable.
+      let num1 = parseInt(prompt("Enter first number:"));
+      if (!Number.isInteger(num1)) {
+        num1 = parseInt(prompt("Please Enter valid number:"));
+      }
+
+      let num2 = parseInt(prompt("Enter second number:"));
+      if (!Number.isInteger(num2)) {
+        num2 = parseInt(prompt("Please Enter valid number:"));
+      }
+
+      const op = parseInt(
+        prompt(
+          "Enter 1 for addition\nEnter 2 for subtraction\nEnter 3 for multiplication\nEnter 4 for division\n"
+        )
+      );
+
+      switch (op) {
+        case 1:
+          alert(`Addition of two numbers is ${num1 + num2}`);
+          break;
+        case 2:
+          alert(`Subtraction of two numbers is ${num1 - num2}`);
+          break;
+        case 3:
+          alert(`Multiplication of two numbers is ${num1 * num2}`);
+          break;
+        case 4:
+          alert(`Division of two numbers is ${num1 / num2}`);
+          break;
+        default:
+          alert("Invalid operation!");
+      }
+    </script>
+  </body>
+</html>

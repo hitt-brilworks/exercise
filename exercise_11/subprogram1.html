@@ -1,0 +1,31 @@
+<!-- Exercise:
+○ Create a program that takes a user’s age and displays whether they are a child,
+teenager, or adult.
+○ Write a program that uses a for loop to display numbers from 1 to 10.
+○ Implement a switch statement to handle different cases for a variable. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercise 11</title>
+  </head>
+  <body>
+    <script>
+      // Create a program that takes a user’s age and displays whether they are a child,
+      // teenager, or adult.
+      const age = parseInt(prompt("Enter your age: "));
+
+      if (age > 0 && age < 13) {
+        alert("User is child!");
+      } else if (age > 12 && age < 18) {
+        alert("User is teenager!");
+      } else if (age >= 18) {
+        alert("User is an adult!");
+      } else {
+        alert("Invalid age!");
+      }
+    </script>
+  </body>
+</html>
