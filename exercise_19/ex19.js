@@ -49,10 +49,10 @@ console.log("Inside global scope", b); // 5
 console.log(
   "------------------------------------------------------------------------"
 );
-// Experiment with variable scope by declaring variables inside and outside of functions and blocks using let
+// Experiment with variable scope by declaring variables inside and outside of functions and blocks using const
 const c = 5;
-fun1();
-function fun1() {
+fun2();
+function fun2() {
   const c = 6;
   console.log("Inside function scope", c); // 6
 }
