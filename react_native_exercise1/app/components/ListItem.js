@@ -9,7 +9,7 @@ function ListItem({ item }) {
   const textColorStyle = item.status === "Completed" ? "green" : "red";
 
   function onPress() {
-    setIsExpanded(!isExpanded); // Simplified toggle logic
+    setIsExpanded(!isExpanded);
   }
 
   return (

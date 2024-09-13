@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import React from "react";
+import { FlatList } from "react-native";
 
 import ListItem from "./ListItem";
 
-function TaskCard({ tasks }) {
+function CardLists({ tasks }) {
   const renderItem = ({ item }) => {
     return <ListItem item={item} />;
   };
@@ -18,4 +18,4 @@ function TaskCard({ tasks }) {
   );
 }
 
-export default TaskCard;
+export default CardLists;

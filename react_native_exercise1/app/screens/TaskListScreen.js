@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 
 import colors from "../config/colors";
 import FilterButton from "../components/FilterButton";
-import TaskCard from "../components/TaskCard";
+import CardLists from "../components/CardLists";
 
 function TaskListScreen() {
   const [selectedFilter, setFilter] = useState("All");
@@ -62,17 +62,8 @@ function TaskListScreen() {
   return (
     <>
       <View style={styles.container}>
-        <FilterButton
-          selectedFilter={selectedFilter}
-          setFilter={setFilter}
-          tasks={tasks}
-          setTasks={setTasks}
-        />
-        <TaskCard
-          selectedFilter={selectedFilter}
-          tasks={filteredTasks}
-          setTasks={setTasks}
-        />
+        <FilterButton selectedFilter={selectedFilter} setFilter={setFilter} />
+        <CardLists tasks={filteredTasks} />
       </View>
     </>
   );
