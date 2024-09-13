@@ -1,3 +1,3 @@
 export default {
-  bg: "#ebe8e8",
+  bg: "#fff",
 };

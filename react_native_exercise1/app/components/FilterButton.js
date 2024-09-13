@@ -1,17 +1,8 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, StatusBar } from "react-native";
 import { Picker } from "@react-native-picker/picker";
 
-function FilterButton() {
-  const [selectedFilter, setFilter] = useState("All");
-  const pickerRef = useRef();
-  function open() {
-    pickerRef.current.focus();
-  }
-
-  function close() {
-    pickerRef.current.blur();
-  }
+function FilterButton({ selectedFilter, setFilter }) {
   return (
     <>
       <View style={styles.container}>
@@ -19,9 +10,8 @@ function FilterButton() {
         <Picker
           mode="dropdown"
           style={styles.picker}
-          ref={pickerRef}
           selectedValue={selectedFilter}
-          onValueChange={(itemValue, itemIndex) => setFilter(itemValue)}
+          onValueChange={(itemValue) => setFilter(itemValue)}
         >
           <Picker.Item label="All" value="All" />
           <Picker.Item label="Completed" value="Completed" color="green" />
