@@ -1,16 +1,17 @@
 import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 
+import { useOrientation } from "../contexts/orientationContext";
 import Screen from "../components/Screen";
 import Header from "../components/Header";
-import Card from "../components/Card";
+import CardList from "../components/CardList";
 
 function CityGuideGalleryScreen() {
   const [isGridView, setIsGridView] = useState(true);
   return (
     <Screen style={styles.container}>
       <Header isGridView={isGridView} setIsGridView={setIsGridView} />
-      <Card />
+      <CardList isGridView={isGridView} />
     </Screen>
   );
 }

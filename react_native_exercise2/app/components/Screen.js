@@ -1,15 +1,26 @@
 import React from "react";
-import { StyleSheet, SafeAreaView } from "react-native";
+import { SafeAreaView } from "react-native";
 import Constants from "expo-constants";
 
-function Screen({ children, style }) {
-  return <SafeAreaView style={[styles.screen, style]}>{children}</SafeAreaView>;
-}
+import { useOrientation } from "../contexts/orientationContext";
 
-const styles = StyleSheet.create({
-  screen: {
-    paddingTop: Constants.statusBarHeight,
-  },
-});
+function Screen({ children, style }) {
+  const orientation = useOrientation();
+  return (
+    <SafeAreaView
+      style={[
+        style,
+        {
+          paddingTop:
+            orientation === "portrait"
+              ? Constants.statusBarHeight + 20
+              : Constants.statusBarHeight,
+        },
+      ]}
+    >
+      {children}
+    </SafeAreaView>
+  );
+}
 
 export default Screen;

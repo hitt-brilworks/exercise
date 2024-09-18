@@ -51,7 +51,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     fontWeight: "500",
   },
-  icon: {},
 });
 
 export default Header;

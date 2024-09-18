@@ -6,47 +6,102 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 import colors from "../config/colors";
 import AppText from "./AppText";
+import { useOrientation } from "../contexts/orientationContext";
+import { getExpoGoProjectConfig } from "expo";
 
-function Card({ image, title, subTitle, isGridView }) {
+function Card({ image, title, subTitle, isGridView, itemHeight, itemWidth }) {
+  const orientation = useOrientation();
   return (
-    <ImageBackground source={image} resizeMode="cover" style={styles.image}>
-      <View style={styles.container}>
-        <View style={styles.likeContainerWrapper}>
-          <BlurView style={styles.likeContainer} intensity={50}>
-            <AntDesign name="hearto" size={25} color="white" />
+    <View
+      style={[
+        !isGridView
+          ? {
+              height: itemHeight,
+            }
+          : isGridView && orientation === "landscape"
+          ? { width: itemWidth, flex: 1 }
+          : !isGridView && orientation === "landscape"
+          ? { height: itemHeight }
+          : undefined,
+        { elevation: 10 },
+      ]}
+    >
+      <ImageBackground
+        source={image}
+        resizeMode="cover"
+        style={[
+          styles.image,
+          !isGridView && orientation === "portrait"
+            ? { width: 342, height: 620 }
+            : isGridView && orientation === "landscape"
+            ? { height: 270, width: 200 }
+            : !isGridView && orientation === "landscape"
+            ? { width: "100%", height: "80%" }
+            : undefined,
+        ]}
+      >
+        <View style={styles.container}>
+          <View
+            style={[
+              styles.likeContainerWrapper,
+              isGridView
+                ? { top: 10, left: 100 }
+                : { alignSelf: "flex-end", top: 20, right: 20 },
+              isGridView && orientation === "landscape"
+                ? { alignSelf: "flex-start", left: 140 }
+                : undefined,
+            ]}
+          >
+            <BlurView style={styles.likeContainer} intensity={50}>
+              <AntDesign name="hearto" size={25} color="white" />
+            </BlurView>
+          </View>
+          <BlurView
+            style={[
+              styles.data,
+              { height: isGridView ? 100 : 200 },
+              !isGridView ? { padding: 30 } : undefined,
+              !isGridView && orientation === "landscape"
+                ? { padding: 25, height: "80%" }
+                : undefined,
+            ]}
+            intensity={40}
+            experimentalBlurMethod="dimezisBlurView"
+          >
+            <AppText
+              style={[
+                styles.title,
+                !isGridView ? { fontSize: 32 } : undefined,
+                !isGridView && orientation === "landscape"
+                  ? { fontSize: 24 }
+                  : undefined,
+              ]}
+            >
+              {title}
+            </AppText>
+            {isGridView && (
+              <FontAwesome5
+                name="long-arrow-alt-right"
+                size={35}
+                color="white"
+              />
+            )}
+            {!isGridView && (
+              <AppText
+                style={[
+                  styles.subTitle,
+                  !isGridView && orientation === "landscape"
+                    ? { fontSize: 16 }
+                    : undefined,
+                ]}
+              >
+                {subTitle}
+              </AppText>
+            )}
           </BlurView>
         </View>
-        <BlurView
-          style={styles.data}
-          intensity={40}
-          experimentalBlurMethod="dimezisBlurView"
-        >
-          <AppText style={styles.title}>{title}</AppText>
-          <FontAwesome5 name="long-arrow-alt-right" size={35} color="white" />
-        </BlurView>
-      </View>
-    </ImageBackground>
-    // <ImageBackground
-    //   source={require("../assets/tokyo.jpg")}
-    //   resizeMode="cover"
-    //   style={styles.image}
-    // >
-    //   <View style={styles.container}>
-    //     <View style={styles.likeContainerWrapper}>
-    //       <BlurView style={styles.likeContainer} intensity={50}>
-    //         <AntDesign name="hearto" size={25} color="white" />
-    //       </BlurView>
-    //     </View>
-    //     <BlurView
-    //       style={styles.data}
-    //       intensity={40}
-    //       experimentalBlurMethod="dimezisBlurView"
-    //     >
-    //       <AppText style={styles.title}>grgrgrg</AppText>
-    //       <FontAwesome5 name="long-arrow-alt-right" size={35} color="white" />
-    //     </BlurView>
-    //   </View>
-    // </ImageBackground>
+      </ImageBackground>
+    </View>
   );
 }
 
@@ -56,16 +111,16 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   image: {
-    width: 170,
-    height: 250,
+    overflow: "hidden",
+    borderRadius: 15,
+    width: 162,
+    height: 300,
   },
   likeContainerWrapper: {
     borderRadius: 25,
     overflow: "hidden",
     height: 50,
     width: 50,
-    top: 10,
-    left: 110,
   },
   likeContainer: {
     alignItems: "center",
@@ -76,12 +131,16 @@ const styles = StyleSheet.create({
   data: {
     padding: 10,
     justifyContent: "space-between",
-    height: 100,
     width: "100%",
   },
   title: {
-    color: colors.white,
+    color: colors.title,
     fontSize: 24,
+  },
+  subTitle: {
+    color: colors.subTitle,
+    fontSize: 18,
+    textAlign: "justify",
   },
 });
 
