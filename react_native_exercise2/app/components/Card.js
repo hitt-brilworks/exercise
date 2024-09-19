@@ -1,13 +1,11 @@
 import React from "react";
 import { ImageBackground, StyleSheet, View } from "react-native";
-import AntDesign from "@expo/vector-icons/AntDesign";
+import { AntDesign, FontAwesome5 } from "@expo/vector-icons";
 import { BlurView } from "expo-blur";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 import colors from "../config/colors";
 import AppText from "./AppText";
 import { useOrientation } from "../contexts/orientationContext";
-import { getExpoGoProjectConfig } from "expo";
 
 function Card({ image, title, subTitle, isGridView, itemHeight, itemWidth }) {
   const orientation = useOrientation();
@@ -19,11 +17,17 @@ function Card({ image, title, subTitle, isGridView, itemHeight, itemWidth }) {
               height: itemHeight,
             }
           : isGridView && orientation === "landscape"
-          ? { width: itemWidth, flex: 1 }
+          ? {
+              height: itemHeight,
+              flex: 1,
+              justifyContent: "space-between",
+            }
           : !isGridView && orientation === "landscape"
-          ? { height: itemHeight }
+          ? {
+              height: itemHeight,
+              flex: 1,
+            }
           : undefined,
-        { elevation: 10 },
       ]}
     >
       <ImageBackground
@@ -36,7 +40,10 @@ function Card({ image, title, subTitle, isGridView, itemHeight, itemWidth }) {
             : isGridView && orientation === "landscape"
             ? { height: 270, width: 200 }
             : !isGridView && orientation === "landscape"
-            ? { width: "100%", height: "80%" }
+            ? {
+                width: "100%",
+                height: 255,
+              }
             : undefined,
         ]}
       >
@@ -62,7 +69,7 @@ function Card({ image, title, subTitle, isGridView, itemHeight, itemWidth }) {
               { height: isGridView ? 100 : 200 },
               !isGridView ? { padding: 30 } : undefined,
               !isGridView && orientation === "landscape"
-                ? { padding: 25, height: "80%" }
+                ? { padding: 15, height: "42%" }
                 : undefined,
             ]}
             intensity={40}

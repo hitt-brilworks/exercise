@@ -14,7 +14,7 @@ function Screen({ children, style }) {
           paddingTop:
             orientation === "portrait"
               ? Constants.statusBarHeight + 20
-              : Constants.statusBarHeight,
+              : Constants.statusBarHeight + 10,
         },
       ]}
     >

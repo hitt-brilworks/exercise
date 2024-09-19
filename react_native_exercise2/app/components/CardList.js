@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, FlatList, View } from "react-native";
+import Constants from "expo-constants";
 
 import { useOrientation } from "../contexts/orientationContext";
 import Card from "../components/Card";
@@ -33,7 +34,7 @@ function CardList({ isGridView }) {
   }
 
   return (
-    <View style={styles.container} onLayout={flatListHeight}>
+    <View style={[styles.container]} onLayout={flatListHeight}>
       <FlatList
         key={listKey}
         pagingEnabled
@@ -56,7 +57,9 @@ function CardList({ isGridView }) {
         }
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() =>
-          isGridView ? <View style={{ height: 20 }} /> : null
+          isGridView && orientation === "portrait" ? (
+            <View style={{ height: 20 }} />
+          ) : null
         }
       />
     </View>
