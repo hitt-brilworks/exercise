@@ -9,9 +9,8 @@ import { useNavigation } from "@react-navigation/native";
 import CartIcon from "../components/CartIcon";
 
 const Drawer = createDrawerNavigator();
-const Stack = createStackNavigator();
 
-const CartStack = () => {
+export default function DrawerNavigator() {
   const navigation = useNavigation();
   const { cart, clearCart } = useCartContext();
   const handleClearCart = () => {
@@ -27,8 +26,21 @@ const CartStack = () => {
   };
 
   return (
-    <Stack.Navigator>
-      <Stack.Screen
+    <Drawer.Navigator
+      id="drawer"
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
+      <Drawer.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: "Home",
+          headerRight: () => {
+            return <CartIcon />;
+          },
+        }}
+      />
+      <Drawer.Screen
         name="Cart"
         component={CartScreen}
         options={{
@@ -53,31 +65,6 @@ const CartStack = () => {
               />
             ) : null,
         }}
-      />
-    </Stack.Navigator>
-  );
-};
-
-export default function DrawerNavigator() {
-  return (
-    <Drawer.Navigator
-      id="drawer"
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
-    >
-      <Drawer.Screen
-        name="Home"
-        component={HomeScreen}
-        options={({ navigation }) => ({
-          title: "Home",
-          headerRight: () => {
-            return <CartIcon />;
-          },
-        })}
-      />
-      <Drawer.Screen
-        name="CartStack"
-        component={CartStack}
-        options={{ headerShown: false, title: "Cart", unmountOnBlur: true }}
       />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>

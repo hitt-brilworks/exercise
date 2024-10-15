@@ -9,7 +9,7 @@ export default function CartIcon() {
   const navigation = useNavigation();
   const { cart } = useCartContext();
   return (
-    <TouchableOpacity onPress={() => navigation.navigate("CartStack")}>
+    <TouchableOpacity onPress={() => navigation.navigate("Cart")}>
       {cart?.length > 0 ? (
         <Ionicons
           name="cart"
